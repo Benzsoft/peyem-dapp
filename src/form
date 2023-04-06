@@ -1,0 +1,79 @@
+     <div className="input-box my-4">
+            
+
+                
+
+              <div className="input-area d-flex flex-column flex-md-row mb-3">
+                <div className="input-text">
+                  <input    type="text" placeholder="Receipient's Phone Number" />
+                  {/* <a href="#">Max</a> */}
+                </div>
+                {/* <a href="#" className="btn input-btn mt-2 mt-md-0 ml-md-3">Approve</a> */}
+              </div>
+
+              <div className="input-area d-flex flex-column flex-md-row mb-3">
+                <div className="input-text">
+
+              <select  style={{border :"2px solid white" , borderRadius :"8px"}} id="list" onchange="getSelectValue();">
+            <option  value="INR">MonCash</option>
+            <option  value="USD">NatCash</option>
+            
+           
+        </select>
+
+        </div>
+                {/* <a href="#" className="btn input-btn mt-2 mt-md-0 ml-md-3">Approve</a> */}
+              </div>
+
+              <div className="input-area d-flex flex-column flex-md-row">
+                <div className="input-text">
+                  <input value={ inputValue }  onChange={handleInputChange } type="number" placeholder="0.0" />
+                  {/* <a href="#">Max</a> */}
+                </div>
+                {/* <a onClick={pay} href="#" className="btn input-btn mt-2 mt-md-0 ml-md-3">Send</a> */}
+              </div>
+
+
+               
+              <div style={{marginTop :"4%" }} className="input-area d-flex flex-column flex-md-row">
+                <div className="input-text">
+                 <p className='ptext' > The amount of cUSD to deposit is : <span> {parseInt(inputValue) + (parseInt(inputValue) / 100) * 10}</span> </p>
+                  {/* <a href="#">Max</a> */}
+                </div>
+                {/* <a onClick={pay} href="#" className="btn input-btn mt-2 mt-md-0 ml-md-3">Send</a> */}
+              </div>
+
+              <div style={{marginTop :"4%" , marginLeft:"11%" }} className="input-area d-flex flex-column flex-md-row">
+                
+                 <p className='ptext' > Will Receive(in Haitian gourde) : <span> {inputValue * 153}HTG</span> </p>
+                  {/* <a href="#">Max</a> */}
+                
+                {/* <a onClick={pay} href="#" className="btn input-btn mt-2 mt-md-0 ml-md-3">Send</a> */}
+              </div>
+              <form >
+              <div style={{marginTop :"4%" , marginLeft:"5%"  }} className="input-area d-flex flex-column flex-md-row">
+          
+                <div className="input-text">
+
+                
+                <input type="checkbox" id="myCheck" name="test" required="required" value="Bike" />
+  <label className='ptext' style={{marginLeft :"2%" ,marginTop :"0" }} for="vehicle1"> I agree to the term of peyem services </label>
+                  {/* <a href="#">Max</a> */}
+               
+                </div>
+                {/* <a onClick={pay} href="#" className="btn input-btn mt-2 mt-md-0 ml-md-3">Send</a> */}
+              </div>
+
+
+
+
+             
+
+              <div style={{marginTop :"4%" , marginLeft :"25%"}} className="input-area d-flex flex-column flex-md-row">
+                
+                <a type="submit" onClick={pay} href="#" className="btn input-btn mt-2 mt-md-0 ml-md-3">Send</a>
+              
+              </div>
+              
+              </form>
+            </div>
