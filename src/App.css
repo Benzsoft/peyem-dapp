@@ -1,5 +1,17 @@
-.App {
+body[data-theme='light'] {
+  background-color: #fff;
+}
+
+body[data-theme='dark'] {
+  background-color: #333;
+}
+
+.App[data-theme='light'] {
   text-align: center;
+}
+
+.App[data-theme='dark'] {
+  text-align: end;
 }
 
 .App-logo {
@@ -37,7 +49,6 @@
   }
 }
 
-
 .form {
   background-color: transparent;
   padding: 3.125em;
@@ -45,7 +56,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  box-shadow: 5px 5px 15px -1px rgba(0,0,0,0.75);
+  box-shadow: 5px 5px 15px -1px rgba(0, 0, 0, 0.75);
 }
 
 .signup {
@@ -88,12 +99,10 @@
   color: grey;
 }
 
-.checkbox, input[type="checkbox"] {
+.checkbox,
+input[type='checkbox'] {
   accent-color: #639;
 }
-
-
-
 
 .form--submit {
   width: 50%;
