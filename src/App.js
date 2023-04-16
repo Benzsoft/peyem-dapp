@@ -1,6 +1,4 @@
 import React from 'react';
-import { ThemeContext } from './themeContext';
-import logo from './logo.svg';
 import './App.css';
 import { useNavigate } from 'react-router-dom';
 import { useEffect, useState } from 'react';
@@ -11,6 +9,7 @@ import Web3Modal from 'web3modal';
 import WalletConnectProvider from '@walletconnect/web3-provider';
 import CoinbaseWalletSDK from '@coinbase/wallet-sdk';
 import axios from 'axios';
+import { DarkModeToggle } from 'react-dark-mode-toggle-2';
 
 function App() {
   const navigate = useNavigate();
@@ -19,13 +18,10 @@ function App() {
   const [fullconnect, setfullConnect] = useState('Connect wallet');
   const [inputValue, setInputValue] = useState(0);
   const [inputValue1, setInputValue1] = useState(0);
-  const [theme, setTheme] = useState('light');
+  const [theme, setTheme] = useState(false);
 
-  function toggleTheme(e) {
-    e.preventDefault();
-    const newTheme = theme === 'light' ? 'dark' : 'light';
-    document.documentElement.setAttribute('data-theme', newTheme);
-    setTheme(newTheme);
+  function toggleTheme() {
+    setTheme(!theme);
   }
 
   function handleInputChange(event) {
@@ -904,7 +900,13 @@ function App() {
               </ul>
               <ul className='navbar-nav items mx-auto'>
                 <li className='nav-item active'>
-                  <a
+                  <DarkModeToggle
+                    onChange={(e) => {
+                      toggleTheme();
+                    }}
+                    isDarkMode={theme}
+                  />
+                  {/* <a
                     href='/'
                     onClick={toggleTheme}
                     style={{
@@ -912,7 +914,7 @@ function App() {
                     }}
                   >
                     {theme}
-                  </a>
+                  </a> */}
                 </li>
               </ul>
 
@@ -951,15 +953,30 @@ function App() {
         </header>
         {/* ***** Header End ***** */}
         {/* ***** Hero Area Start ***** */}
-        <section className='hero-section'>
+        <section
+          style={{
+            backgroundImage: `linear-gradient(0deg, ${
+              theme ? 'white' : '#090919'
+            }, rgba(9, 10, 26, 0.8)), url(img/bg/inner_bg.jpg)`,
+          }}
+          className='hero-section'
+        >
           <div className='container'>
             <div className='row align-items-center justify-content-center'>
               <div className='col-12 col-md-6 col-lg-9 text-center'>
                 {/* Hero Content */}
                 <div className='hero-content'>
                   <div className='intro text-center mb-5'>
-                    <h1 style={{ color: 'blue' }}> Deposit CUSD </h1>
-                    <h3 className='mt-4'>Rule The World</h3>
+                    <h1 style={{ color: theme ? 'black' : 'blue' }}>
+                      {' '}
+                      Deposit CUSD{' '}
+                    </h1>
+                    <h3
+                      style={{ color: theme ? 'black' : 'white' }}
+                      className='mt-4'
+                    >
+                      Rule The World
+                    </h3>
                   </div>
                   {/* Buttons */}
                   <div className='button-group'>
@@ -970,7 +987,14 @@ function App() {
                       <i className='icon-rocket mr-2' />
                       Buy Token
                     </a>
-                    <a className='btn btn-bordered-white' href=''>
+                    <a
+                      style={{
+                        borderColor: theme ? 'black' : 'white',
+                        color: theme ? 'black' : 'white',
+                      }}
+                      className='btn btn-bordered-white'
+                      href=''
+                    >
                       <i className='icon-note mr-2' />
                       Contract
                     </a>
@@ -984,7 +1008,7 @@ function App() {
         {/* ***** Staking Area Start ***** */}
         <section
           style={{
-            background: theme === 'light' && 'white',
+            background: theme && 'white',
           }}
           className='staking-area'
           id='stake'
@@ -994,15 +1018,15 @@ function App() {
               <div className='col-6 col-md-6 col-sm-12'>
                 <div
                   style={{
-                    background: theme === 'light' && 'white',
-                    boxShadow: theme === 'light' && '10px 10px 0px 5px #eee',
-                    border: theme === 'light' && '5px solid #eee',
+                    background: theme && 'white',
+                    boxShadow: theme && '10px 10px 0px 5px #eee',
+                    border: theme && '5px solid #eee',
                   }}
                   className='card no-hover staking-card single-staking'
                 >
                   <h3
                     style={{
-                      color: theme === 'light' && '#16182d',
+                      color: theme && '#16182d',
                     }}
                     className='m-0'
                   >
@@ -1019,9 +1043,9 @@ function App() {
                       <div className='staking-tab-content'>
                         <form
                           style={{
-                            boxShadow: theme === 'light' && 'none',
-                            border: theme === 'light' && '5px solid #eee',
-                            color: theme === 'light' && '#16182d',
+                            boxShadow: theme && 'none',
+                            border: theme && '5px solid #eee',
+                            color: theme && '#16182d',
                           }}
                           class='form'
                           onSubmit={pay}
@@ -1045,12 +1069,12 @@ function App() {
                           <select
                             style={{
                               border: `2px solid ${
-                                theme === 'light' ? '#16182d' : 'white'
+                                theme ? '#16182d' : 'white'
                               }`,
                               borderRadius: '8px',
                               marginBottom: '6%',
 
-                              color: theme === 'light' && '#16182d',
+                              color: theme && '#16182d',
                             }}
                             onchange='getSelectValue();'
                           >
@@ -1109,15 +1133,15 @@ function App() {
               <div className='col-6 col-sm-12 col-md-6'>
                 <div
                   style={{
-                    background: theme === 'light' && 'white',
-                    boxShadow: theme === 'light' && '10px 10px 0px 5px #eee',
-                    border: theme === 'light' && '5px solid #eee',
+                    background: theme && 'white',
+                    boxShadow: theme && '10px 10px 0px 5px #eee',
+                    border: theme && '5px solid #eee',
                   }}
                   className='card no-hover staking-card single-staking'
                 >
                   <h3
                     style={{
-                      color: theme === 'light' && '#16182d',
+                      color: theme && '#16182d',
                     }}
                     className='m-0'
                   >
@@ -1134,9 +1158,9 @@ function App() {
                       <div className='staking-tab-content'>
                         <form
                           style={{
-                            boxShadow: theme === 'light' && 'none',
-                            border: theme === 'light' && '5px solid #eee',
-                            color: theme === 'light' && '#16182d',
+                            boxShadow: theme && 'none',
+                            border: theme && '5px solid #eee',
+                            color: theme && '#16182d',
                           }}
                           class='form'
                         >
@@ -1206,7 +1230,7 @@ function App() {
 
         <section
           style={{
-            background: theme === 'light' && 'white',
+            background: theme && 'white',
           }}
           className='content-area'
           id='how_to'
@@ -1216,15 +1240,15 @@ function App() {
               <div className='col-12 col-md-6'>
                 <div
                   style={{
-                    background: theme === 'light' && 'white',
-                    color: theme === 'light' && '#16182d',
+                    background: theme && 'white',
+                    color: theme && '#16182d',
                   }}
                   className='content intro'
                 >
                   <span className='intro-text'>staking</span>
                   <h2
                     style={{
-                      color: theme === 'light' && '#16182d',
+                      color: theme && '#16182d',
                     }}
                   >
                     How to Stake ?
@@ -1246,7 +1270,7 @@ function App() {
                         <div className='content-body ml-4'>
                           <h3
                             style={{
-                              color: theme === 'light' && '#16182d',
+                              color: theme && '#16182d',
                             }}
                             className='m-0'
                           >
@@ -1272,7 +1296,7 @@ function App() {
                         <div className='content-body ml-4'>
                           <h3
                             style={{
-                              color: theme === 'light' && '#16182d',
+                              color: theme && '#16182d',
                             }}
                             className='m-0'
                           >
@@ -1298,7 +1322,7 @@ function App() {
                         <div className='content-body ml-4'>
                           <h3
                             style={{
-                              color: theme === 'light' && '#16182d',
+                              color: theme && '#16182d',
                             }}
                             className='m-0'
                           >
@@ -1345,7 +1369,7 @@ function App() {
         {/* ***** CTA Area Start ***** */}
         <section
           style={{
-            background: theme === 'light' && 'white',
+            background: theme && 'white',
           }}
           className='cta-area p-0'
         >
@@ -1378,8 +1402,8 @@ function App() {
         {/*====== Footer Area Start ======*/}
         <footer
           style={{
-            background: theme === 'light' && 'white',
-            borderTop: theme === 'light' && '5px solid #eeee',
+            background: theme && 'white',
+            borderTop: theme && '5px solid #eeee',
           }}
           className='footer-area'
         >
