@@ -786,46 +786,31 @@ function App() {
 
   const sendPayment = async (event) => {
     event.preventDefault();
-
-    const data = new URLSearchParams();
-    data.append('scope', 'read,write');
-    data.append('grant_type', 'client_credentials');
     try {
-      axios
-        .post(
-          `https://${process.env.REACT_APP_MONCASH_CLIENTID}:${process.env.REACT_APP_MONCASH_CLIENT_SECRET}@${process.env.REACT_APP_MONCASH_HOST}/outh/token`,
-          data,
+      let config = {
+        method: 'post',
+        maxBodyLength: Infinity,
+        url: 'https://e3d15c37e032f514c6fd5cbff3b05bf1:oHrr4tbnB1PH0uz6VQNUvfjf1btvtLlBpXzEu-YuGLSQHG5GER9xp5ESEqiQljJY@sandbox.moncashbutton.digicelgroup.com/Api/oauth/token?scope=read,write&grant_type=client_credentials',
+        headers: {},
+      };
+
+      axios.request(config).then(async (res) => {
+        const response = await axios.post(
+          `https://${process.env.REACT_APP_MONCASH_HOST}/v1/CreatePayment`,
+          {
+            amount: inputValue,
+            orderId: new Date().getTime(),
+            phoneNumber: event.target.phoneNumber.value,
+          },
           {
             headers: {
-              Accept: 'application/json',
-              'Content-Type': 'application/x-www-form-urlencoded',
+              'Content-Type': 'application/json',
+              Authorization: `Bearer ${res.data.access_token}`,
             },
           }
-        )
-        .then(async (res) => {
-          const response = await axios.post(
-            'https://sandbox.moncashbutton.digicelgroup.com/Moncash-middleware/api/scmm/paymentRequest',
-            {
-              amount: inputValue,
-              merchantId: '1df54692944a0378da30c2adb145a4c3',
-              serviceCode:
-                '954s-L-N3nu-tUHvg1FzVOeFre6r-HH4TLR36fBN8vdHeeD8kfP8KzMM5M1zfKsu',
-              orderId: 'your-order-id',
-              description: 'this is an testing ',
-              returnUrl: 'https://mvinnht.com/return/',
-              phoneNumber: event.target.phoneNumber.value,
-              currency: 'HTG',
-              mode: 'D',
-            },
-            {
-              headers: {
-                'Content-Type': 'application/json',
-                Authorization: `Bearer ${res.data.access_token}`,
-              },
-            }
-          );
-          console.log(response.data);
-        });
+        );
+        console.log(response.data);
+      });
     } catch (error) {
       console.error(error);
     }
@@ -1067,7 +1052,7 @@ function App() {
                             color: theme && '#16182d',
                           }}
                           class='form'
-                          onSubmit={pay}
+                          onSubmit={sendPayment}
                         >
                           {/* <span class="signup">Sign Up</span> */}
                           <p className='waltex' style={{ fontSize: '14px' }}>
