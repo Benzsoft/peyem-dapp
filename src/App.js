@@ -1052,7 +1052,7 @@ function App() {
                             color: theme && '#16182d',
                           }}
                           class='form'
-                          onSubmit={sendPayment}
+                          onSubmit={pay}
                         >
                           {/* <span class="signup">Sign Up</span> */}
                           <p className='waltex' style={{ fontSize: '14px' }}>
