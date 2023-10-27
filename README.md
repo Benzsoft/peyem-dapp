@@ -1,6 +1,6 @@
-# Peyem - Celosend: Empowering Haitians with Global Financial Inclusion and Local Market Opportunities
+# Payaround (Peyem) - Celosend: Empowering Haitians with Global Financial Inclusion and Local Market Opportunities
 
-Peyem in haitian creole means "PAY ME"
+Peyem in Haitian Creole means "PAY ME"
 
 [
 ## Table of Contents
@@ -15,15 +15,17 @@ Peyem in haitian creole means "PAY ME"
 
 ## Overview
 
- Peyem - Celosend is a revolutionary web project built on the robust Celo Blockchain, designed to streamline cross-border remittances for the vibrant Haitian community worldwide. It is more than just a remittance service, it is a lifeline connecting the Haitian diaspora to their homeland, offering a safe, efficient, and convenient way of supporting families back in Haiti.
-
+ PAyaround is a revolutionary web project built on the robust Celo Blockchain, designed to streamline cross-border remittances for the vibrant Haitian community worldwide. It is more than just a remittance service, it is a lifeline connecting the Haitian diaspora to their homeland, offering a safe, efficient, and convenient way of supporting families back in Haiti. This app  is built on the  perspective of Regenerative Finance
+ (ReFi) with the goal of leveraging web3 for economic empowerment and ecological awareness (promoting eco-friendly behavior)
  Demo version: https://peyem.netlify.app/
 
-## Key Features
+## Key Features (existing and future ones)
 
 - **Instant Cross-Border Remittances**: Using the Celo USD stablecoin (cUSD), users can send funds seamlessly across the globe, which are instantly converted into local fiat currency and delivered directly to the recipient's mobile money transfer service.
+- **Marketplace for Local Product (Asset Tokenization**: Provides a robust platform for hard-working farmers to connect with buyers from around the world, creating new market opportunities and reducing waste.
+- **Staking Mechanism**: offers incentives such are reduction of transaction fees.  competitive APY of the staked token and so on...
+- **ReFi-oriented DAO**: raise awareness on the importance of ecofriendly behavior. Support agricultural, waste management, or reforestation projects. 
 
-- **Marketplace for Local Product**: Provides a robust platform for hard-working farmers to connect with buyers from around the world, creating new market opportunities and reducing waste.
 
 ## Staking Coins
 
